@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Version>0.1.0</Version>
+    <PackageId>UGemini</PackageId>
+    <Authors>Elvin Suleymanov</Authors>
+    <Company>thesuleymanov</Company>
+    <Description>UGemini is a modern .NET client for Google's Gemini API (Generative Language API). It allows easy interaction with multiple Gemini models like Gemini 2.0 Flash, Gemini 1.5 Pro, and more.</Description>
+    <PackageTags>Gemini Google AI LLM NLP UGemini</PackageTags>
+    <RepositoryUrl>https://github.com/thesuleymanov/UGemini</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/thesuleymanov/UGemini</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Net.Http.Json" Version="7.0.0" />
+  </ItemGroup>
+</Project>
