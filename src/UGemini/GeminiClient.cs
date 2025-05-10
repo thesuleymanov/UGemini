@@ -140,6 +140,52 @@ public class GeminiClient
         return result?.Candidates?.FirstOrDefault()?.Content?.Parts?.FirstOrDefault()?.Text;
     }
 
+    // Generates text using the specified prompt and base64-encoded image.
+    // The prompt is the input text that will be used to generate the output text.
+    // The base64Image is the base64-encoded image string that will be used as visual input.
+    // The mimeType specifies the type of image (e.g., "image/png").
+    // The model specifies which Gemini model to use for text generation.
+    // The method sends a request to the Gemini API and returns the generated text.
+    // If the request fails, it will throw an exception.
+    // The method is asynchronous and returns a Task<string?>.
+    // The string returned is the generated text.
+    // If no text is generated, it will return null.
+    public async Task<string?> GenerateTextWithImageAsync(string prompt, string base64Image, string mimeType, GeminiModel model)
+    {
+        if (string.IsNullOrWhiteSpace(base64Image))
+            throw new ArgumentException("Base64 image data cannot be null or empty.", nameof(base64Image));
+
+        var request = new GeminiRequest
+        {
+            Contents = new List<Content>
+            {
+                new Content
+                {
+                    Parts = new List<Part>
+                    {
+                        new Part { Text = prompt },
+                        new Part
+                        {
+                            InlineData = new InlineData
+                            {
+                                MimeType = mimeType,
+                                Base64Data = base64Image
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        var endpoint = $"https://generativelanguage.googleapis.com/v1beta/{model.ToModelName()}:generateContent?key={_apiKey}";
+
+        var response = await _httpClient.PostAsJsonAsync(endpoint, request);
+        response.EnsureSuccessStatusCode();
+
+        var result = await response.Content.ReadFromJsonAsync<GeminiResponse>();
+        return result?.Candidates?.FirstOrDefault()?.Content?.Parts?.FirstOrDefault()?.Text;
+    }
+
     // Gets the MIME type of the specified file based on its extension.
     // The MIME type is used to specify the type of data being sent in the request.
     // The method throws a NotSupportedException if the file extension is not supported.
