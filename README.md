@@ -1,4 +1,4 @@
-# UGemini
+![Header](https://github.com/thesuleymanov/UGemini/blob/main/images/header.jpg?raw=true)
 
 **UGemini** is a modern .NET client for Google's Gemini API (Generative Language API). It allows easy interaction with multiple Gemini models like Gemini 2.0 Flash, Gemini 1.5 Pro, and more.
 
