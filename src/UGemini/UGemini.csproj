@@ -11,6 +11,7 @@
     <RepositoryUrl>https://github.com/thesuleymanov/UGemini</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/thesuleymanov/UGemini</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/thesuleymanov/UGemini/blob/main/images/logo.png?raw=true</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
